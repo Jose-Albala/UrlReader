@@ -10,9 +10,12 @@ We will use https://www.postman.com/ to send the request.
 
 url examples : 
 
-xml url : https://factionskis.com/pages/photoslurp-product-feed
-csv url : https://cdn-117.anonfiles.com/xdX6N28fy3/ddb8cc93-1663870637/csv-prueba
-tsv url : https://cdn-127.anonfiles.com/JcS0N98cy6/fef5071e-1663871288/tsv-prueba.txt
+xml url : https://factionskis.com/pages/photoslurp-product-feed 
+
+csv url : https://cdn-117.anonfiles.com/xdX6N28fy3/ddb8cc93-1663870637/csv-prueba 
+
+tsv url : https://cdn-127.anonfiles.com/JcS0N98cy6/fef5071e-1663871288/tsv-prueba.txt 
+
 
 Future Updates : 
 
