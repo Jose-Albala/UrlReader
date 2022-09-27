@@ -1,16 +1,17 @@
 from module.file import File
-from urllib.request import urlopen
 from bs4 import BeautifulSoup as BS
+from urllib.request import urlopen
 import csv
 import requests
+import os
 
 def UrlReader(url):
     if url.endswith(".csv"):
         return File("csv", url)
-    elif url.endswith(".tsv"):
-        return File("tsv", url)
     elif url.endswith(".xml"):
         return File("xml", url)
+    elif url.endswith(".tsv"):
+        return File("tsv", url)
     else:
         if CheckForXML(url):
             return File("xml", url)
@@ -20,6 +21,8 @@ def UrlReader(url):
             return File("tsv", url)
         else:
             return File("Format File Error", url)
+
+    
 
 def CheckForXML(url):
     # Saving http request in response
@@ -39,24 +42,29 @@ def CheckForXML(url):
 def CheckForCSV(url):
     sniffer = csv.Sniffer()
     file = requests.get(url)
-    with open('test2.txt', 'w', encoding='utf-8') as f:
+    with open("test2.txt", 'w', encoding="utf-8") as f:
         f.writelines(file.text)
     f.close()
     dialect = sniffer.sniff(file.text)
     if dialect.delimiter == ",":
-    #     # Send JSON object
-        return True
+        mypath= os.getcwd() + "\\test2.txt"
+        if os.path.isfile(mypath):
+            os.remove(mypath)
+            return True
     else:
         return False
-
+    
 def CheckForTSV(url):
     sniffer = csv.Sniffer()
     file = requests.get(url)
-    with open('test2.txt', 'w', encoding='utf-8') as f:
+    with open("test2.txt", 'w', encoding="utf-8") as f:
         f.writelines(file.text)
     f.close()
     dialect = sniffer.sniff(file.text)
     if dialect.delimiter == "\t":
-    #     # Send JSON object
-        return True
-    
+        mypath= os.getcwd() + "\\test2.txt"
+        if os.path.isfile(mypath):
+            os.remove(mypath)
+            return True
+    else:
+        return False
