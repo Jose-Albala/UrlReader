@@ -1,70 +1,49 @@
-from module.file import File
-from bs4 import BeautifulSoup as BS
-from urllib.request import urlopen
+from module.file import *
 import csv
 import requests
-import os
+from urllib.request import urlopen
+from bs4 import BeautifulSoup as BS
 
-def UrlReader(url):
+# Check the URL to find the file format, if not, call PruebaLocal function.
+def ReadUrl(url):
     if url.endswith(".csv"):
         return File("csv", url)
-    elif url.endswith(".xml"):
-        return File("xml", url)
     elif url.endswith(".tsv"):
         return File("tsv", url)
+    elif url.endswith(".xml"):
+        return File("xml", url)
     else:
-        if CheckForXML(url):
-            return File("xml", url)
-        elif CheckForCSV(url):
-            return File("csv", url)
-        elif CheckForTSV(url):
-            return File("tsv", url)
-        else:
-            return File("Format File Error", url)
+        return FormatFinder(url)
 
-    
-
-def CheckForXML(url):
-    # Saving http request in response
-    response = urlopen(url)
-    # Reading http request
-    html_doc = response.read()
-    # Parsing data with html.parser
-    soup = BS(html_doc,"html.parser")
-    # Converting to string
-    strhtm = soup.prettify()
-    # Search a sub-string (xml) on the first 40 characters 
-    if "xml" in strhtm[:40]:
-        return True
-    else:
-        return False
-
-def CheckForCSV(url):
+    # Checking the content of the url to find the format
+def FormatFinder(url):
+    if (IsXml(url)):
+        return File("xml", url)
     sniffer = csv.Sniffer()
     file = requests.get(url)
-    with open("test2.txt", 'w', encoding="utf-8") as f:
-        f.writelines(file.text)
-    f.close()
-    dialect = sniffer.sniff(file.text)
-    if dialect.delimiter == ",":
-        mypath= os.getcwd() + "\\test2.txt"
-        if os.path.isfile(mypath):
-            os.remove(mypath)
-            return True
-    else:
-        return False
-    
-def CheckForTSV(url):
-    sniffer = csv.Sniffer()
-    file = requests.get(url)
-    with open("test2.txt", 'w', encoding="utf-8") as f:
+    with open('test2.txt', 'w', encoding='utf-8') as f:
         f.writelines(file.text)
     f.close()
     dialect = sniffer.sniff(file.text)
     if dialect.delimiter == "\t":
-        mypath= os.getcwd() + "\\test2.txt"
-        if os.path.isfile(mypath):
-            os.remove(mypath)
-            return True
+    #     # Send JSON object
+        return File("tsv", url)
+    elif dialect.delimiter == ",":
+        return File("csv", url)
+    return File("File format unknow or not recognizable.", url)
+
+def IsXml(url):
+    response = urlopen(url)
+    html_doc = response.read()
+        # print(html_doc)
+        # Parsing data
+    soup = BS(html_doc, features="xml")
+        # We parse to str
+    strhtm = soup.prettify()
+        # printing lines of html
+        # print(strhtm[:39])
+        # Search a sub-string (xml) on the first 40 characters
+    if "xml" in strhtm[:40]:
+        return True
     else:
         return False

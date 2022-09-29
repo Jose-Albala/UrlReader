@@ -1,12 +1,10 @@
-from urllib import request
-from flask import Flask,request
+from flask import Flask, request
 from service.urlReaderService import *
 from module.file import File
 
 app = Flask(__name__)
 
 @app.route("/", methods = ["GET"])
-def UrlFormatReader():
+def UrlToJson():
     args = request.args
-    url = args["url"]
-    return UrlReader(url).to_json()
+    return ReadUrl(args["url"]).to_json()
