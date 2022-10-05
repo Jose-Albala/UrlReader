@@ -4,7 +4,8 @@ Photoslurp imports catalogs from our clients in order to allow them to link
 each photo with the products contained in the imported catalog that appears
 in that photo. The client, when sets up their catalog in our platform, provides
 us with an URL to import their catalog from.
-The catalogs can be provided in three different formats:
+The catalogs can be provided in three different formats : 
+
 CSV, using pipes ( | ) as separators.
 TSV, in the end is a csv file using tabs ( \t ) as separators.
 XML, using Google Shopping Feed format, an extension of RSS
