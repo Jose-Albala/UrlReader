@@ -1,47 +1,47 @@
-from http.client import InvalidURL
-from msilib import schema
 from flask import render_template, request, jsonify, flash
+
+import service
 from app import app
-from service import * 
+from service import *
+
 
 messages = [{}]
+
 
 @app.route('/')
 def index():
     return render_template('index.html', messages=messages)
 
-@app.route('/create/', methods=['POST' , 'GET'])
+
+@app.route('/create/', methods=['POST', 'GET'])
 def create():
     try:
         if request.method == 'POST':
             url = request.form['url']
             # Check URL as strings
-            if CheckExtensionCSV(url) == True:
-                data = {'url' : url, 'type' : 'csv'}
+            if check_url_csv(url):
+                data = {'url': url, 'format': 'csv'}
                 return jsonify(data)
-            elif CheckExtensionTSV(url) == True:
-                data = {'url' : url, 'type' : 'tsv'}
+            elif check_url_tsv(url):
+                data = {'url': url, 'format': 'tsv'}
                 return jsonify(data)
-            elif CheckExtensionXML(url) == True:
-                data = {'url' : url, 'type' : 'xml'}
+            elif check_url_xml(url):
+                data = {'url': url, 'format': 'xml'}
                 return jsonify(data)
 
             # Checking URL Content
-            elif Find_CSV(url) == True:
-                data = {'url' : url, 'type' : 'csv'}
+            elif find_csv(url):
+                data = {'url': url, 'format': 'csv'}
                 return jsonify(data)
-            elif Find_TSV(url) == True:
-                data = {'url' : url, 'type' : 'tsv'}
+            elif find_tsv(url):
+                data = {'url': url, 'format': 'tsv'}
                 return jsonify(data)
-            elif Find_XML(url) == True:
-                data = {'url' : url, 'type' : 'xml'}
+            elif find_xml(url):
+                data = {'url': url, 'format': 'xml'}
                 return jsonify(data)
-        
+
         else:
             return render_template('create.html')
-    except:
-            flash("Invalid URL,perhaps you meant http://...?")
-            return render_template('create.html')
-            
-
-
+    except requests.exceptions.MissingSchema:
+        flash("Invalid URL,perhaps you meant http://...?")
+        return render_template('create.html')
