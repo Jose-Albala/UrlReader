@@ -1,12 +1,4 @@
 from flask import Flask
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
-=======
-
->>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
 
 # https://factionskis.com/pages/photoslurp-product-feed
 # https://cdn-132.anonfiles.com/34M5Ze94y6/4aa72941-1664793644/prueba-tsv.txt TSV FILE
