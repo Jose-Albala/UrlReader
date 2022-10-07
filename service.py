@@ -47,17 +47,8 @@ def find_tsv(url):
 def find_xml(url):
     # Checking XML content, trying to find the header of a xml file. <?xml version="1.0" encoding="UTF-8"?>
     response = urlopen(url)
-<<<<<<< HEAD
     html_doc = response.read().decode('utf-8')
     str_html = str(html_doc)
-=======
-    html_doc = response.read()
-    soup = bS(html_doc, features="xml")
-    str_html = soup.prettify()
-<<<<<<< HEAD
->>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
-=======
->>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
     if "xml" in str_html[:40]:
         return True
     else:
