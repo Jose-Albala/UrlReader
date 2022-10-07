@@ -1,5 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from flask import render_template, request, jsonify
+=======
+from flask import render_template, request, jsonify, flash
+
+import service
+>>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
 =======
 from flask import render_template, request, jsonify, flash
 
@@ -44,6 +50,7 @@ def create():
                 data = {'url': url, 'format': 'xml'}
                 return jsonify(data)
 <<<<<<< HEAD
+<<<<<<< HEAD
             else:
                 return {'url':url, 'error': 'File format unknown or not recognizable'}
         else:
@@ -54,6 +61,14 @@ def create():
             
 
 
+=======
+
+        else:
+            return render_template('create.html')
+    except requests.exceptions.MissingSchema:
+        flash("Invalid URL,perhaps you meant http://...?")
+        return render_template('create.html')
+>>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
 =======
 
         else:

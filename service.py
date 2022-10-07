@@ -54,6 +54,9 @@ def find_xml(url):
     html_doc = response.read()
     soup = bS(html_doc, features="xml")
     str_html = soup.prettify()
+<<<<<<< HEAD
+>>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
+=======
 >>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
     if "xml" in str_html[:40]:
         return True
