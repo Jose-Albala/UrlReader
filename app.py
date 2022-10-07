@@ -1,4 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask
+<<<<<<< HEAD
+=======
+
+>>>>>>> 661c106b3bbaaede476901afc84e524ecf50479a
 
 # https://factionskis.com/pages/photoslurp-product-feed
 # https://cdn-132.anonfiles.com/34M5Ze94y6/4aa72941-1664793644/prueba-tsv.txt TSV FILE
@@ -9,8 +13,4 @@ app.config['DEBUG'] = True
 app.config['SECRET_KEY'] = 'afa82e24412d6ffa8d2a8e05'
 
 # Import routes
-from controler import *
-
-
-
-
+from controler import create, index
