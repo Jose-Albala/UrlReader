@@ -23,12 +23,11 @@ Then will use csv libraries (Sniffer) to check the content if it is CSV  or TSV.
 Then will use BeautifulSoup to check XML code to confirm the xml format.
 
 Requirements : 
-
-1. We need to install requirements.txt.
-2. Execute the run.py to start the flask server.
-3. Go to "localhost/create/" and try an URL.
+1. We need to pull the docker image by using -docker pull josealbala17/docker-test:latest- in our terminal.
+1. We run the Image in Docker Desktop to create a container and run the container.
+2. Container will install requirements.txt and run the program.
+3. Go to "localhost/create/" and complete the form.
 
 Future Updates : 
 
 1. Need to do UnitTest (TDD)
-2. Need to Dockerize the program.
