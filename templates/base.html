@@ -7,7 +7,8 @@
         .message {
             padding: 10px;
             margin: 5px;
-            background-color: #ffffff
+            background-color: #ffffff;
+            text-align: center;
         }
         nav a {
             color: #961a35;
@@ -22,6 +23,28 @@
             color: #970020;
             background-color: #ffd5de;
         }
+
+        input[type=text] {
+            width : 100px;
+            box-sizing: border-box;
+            transition: width 0.8s ease-in-out;
+        }
+
+        input[type=text]:focus {
+            width: 45%;
+        }
+
+        button{
+            background-color: #961a35;
+            color:white;
+            cursor:pointer;
+        }
+
+        label{
+            font-size:15px;
+            font-style: italic;
+        }
+
 
     </style>
 </head>

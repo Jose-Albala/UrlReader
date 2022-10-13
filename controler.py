@@ -15,6 +15,7 @@ def create():
         if request.method == 'POST':
             url = request.form['url']
             # Check URL as strings
+            # Want to clean this controler, just let the function calls and the jsonify(data)
             if check_url_csv(url):
                 data = {'url': url, 'format': 'csv'}
                 return jsonify(data)
@@ -26,7 +27,7 @@ def create():
                 return jsonify(data)
 
             # Checking URL Content
-            elif find_csv(url):
+            elif find_csv(url) is True:
                 data = {'url': url, 'format': 'csv'}
                 return jsonify(data)
             elif find_tsv(url):
