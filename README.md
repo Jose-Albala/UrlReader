@@ -28,6 +28,3 @@ Requirements :
 2. Container will install requirements.txt and run the program.
 3. Go to "localhost/create/" and complete the form.
 
-Future Updates : 
-
-1. Need to do UnitTest (TDD)
