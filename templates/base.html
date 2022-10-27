@@ -11,10 +11,11 @@
             text-align: center;
         }
         nav a {
-            color: #961a35;
+            color: #000000;
             font-size: 3em;
             margin-left: 50px;
             text-decoration: none;
+            font-family: sans-serif;
         }
 
         .alert {
@@ -46,13 +47,24 @@
         }
 
 
+        hr {
+            border: 10px solid #787878;
+            border-radius: 10px;
+        }
+
+        div {
+            font-family: sans-serif;
+        }
+
     </style>
 </head>
 <body>
+    <br>
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('create') }}">Upload</a>
     </nav>
+    <br>
     <hr>
     <div class="content">
         {% for message in get_flashed_messages() %}
@@ -60,5 +72,6 @@
         {% endfor %}
         {% block content %} {% endblock %}
     </div>
+    <hr>
 </body>
 </html>

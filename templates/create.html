@@ -2,13 +2,12 @@
 
 {% block content %}
     <h1>{% block title %} Upload your Catalogue! {% endblock %}</h1>
-    <form method="post">
+    <form method="get">
         <label for="url">URL : </label>
         <input type="text" name="url"
                placeholder="Message URL"
                value="{{ request.form['url'] }}"></input>
         <br><br>
         <button type="submit">Submit</button><br><br>
-        <button type="reset">Clear</button>
     </form>
 {% endblock %}

@@ -9,4 +9,4 @@ app.config['DEBUG'] = True
 app.config['SECRET_KEY'] = 'afa82e24412d6ffa8d2a8e05'
 
 # Import routes
-from controler import create, index
+from controller import create, index
