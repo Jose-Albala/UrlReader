@@ -6,7 +6,7 @@ in that photo. The client, when sets up their catalog in our platform, provides
 us with an URL to import their catalog from.
 The catalogs can be provided in three different formats : 
 
-CSV, using pipes ( | ) as separators.
+CSV, using pipes ( , ) as separators.
 TSV, in the end is a csv file using tabs ( \t ) as separators.
 XML, using Google Shopping Feed format, an extension of RSS
 The fields included in those files would not be something relevant to this test.
@@ -16,7 +16,7 @@ purposes.
 
 Proposed Solutions.
 
-We will use flask forms to validate the URL.
+We will use postman.com to send the GET requests.
 
 Then will use csv libraries (Sniffer) to check the content if it is CSV  or TSV.
 
@@ -26,5 +26,5 @@ Requirements :
 1. We need to pull the docker image by using -docker pull josealbala17/docker-test:latest- in our terminal.
 1. We run the Image in Docker Desktop to create a container and run the container.
 2. Container will install requirements.txt and run the program.
-3. Go to "localhost/create/" and complete the form.
+3. Go to postman.com and send a request on " localhost/create/?="yoururl.com" ".
 
